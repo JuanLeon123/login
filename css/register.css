@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.slider-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.slider-container {
+    position: absolute;
+    top: 50%;
+    margin-top: -16%;
+    z-index: 999;
+    width: 400px;
+}
+
+.slider-container-login {
+    position: absolute;
+    top: 50%;
+    margin-top: -13%;
+    z-index: 999;
+    width: 400px;
+}
+
+
+.form-title {
+    width: 100%;
+    padding: 12px;
+    background: #2D99CC;
+}
+
+.form-title h1 {
+    font-family: "Open sans";
+    font-size: 25px;
+    font-weight: 200;
+    text-align: center;
+    color: #fff;
+}
+
+.slider-form {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+}
+
+.slider-form input[type=email]{
+    width: 100%;
+    padding: 8px;
+    margin: 25px 0;
+}
+
+.slider-form input[type=submit],
+.slider-form input[type=button] {
+    width: 150px;
+    padding: 5px;
+    margin-top: 25px;
+    border: none;
+    background: #2D99CC;
+    color: #fff;
+    cursor: pointer;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.slider-form ul li {
+    list-style-type: circle !important;
+}
+
+.button-container-login {
+    display: flex;
+    justify-content: center;
+}
+
+.password-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 25px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    cursor: pointer;
+}

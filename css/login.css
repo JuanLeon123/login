@@ -1,0 +1,199 @@
+@import url(responsivesliders.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.slider-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.slider-container-login {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 55%;
+    margin-top: -13%;
+    z-index: 999;
+    width: 100% !important;
+}
+
+
+.form-title {
+    width: 100%;
+    padding: 12px;
+    background: #2D99CC;
+}
+
+.form-title h1 {
+    font-family: "Open sans";
+    font-size: 25px;
+    font-weight: 200;
+    text-align: center;
+    color: #fff;
+}
+
+.slider-form {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+}
+
+.slider-form input[type=email] {
+    width: 100%;
+    padding: 8px;
+    margin: 25px 0;
+}
+
+.slider-form input[type=submit],
+.slider-form input[type=button] {
+    width: 150px;
+    padding: 5px;
+    margin-top: 25px;
+    border: none;
+    background: #2D99CC;
+    color: #fff;
+    cursor: pointer;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#confirmPassword {
+    width: 100%;
+    padding: 8px;
+}
+
+.slider-form ul li {
+    list-style-type: circle !important;
+}
+
+.button-container-login {
+    display: flex;
+    justify-content: center;
+}
+
+.password-container {
+    position: relative;
+    display: inline-block;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 480px) {
+    .slider-container{
+        width: 90%; 
+        height: 100vh;
+    }
+
+    .slider-container-login {
+        position: relative;
+        top: 60% !important;
+        margin-top: -13%;
+        z-index: 999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%; 
+        height: 100vh;
+    }
+
+    .slider-wrap {
+        position: absolute;
+    }
+
+    .form-title h1, .slider-form input, .slider-form button {
+        font-size: 18px;
+    }
+
+    .slider-form input[type=email], .slider-form input[type=password] {
+        padding: 5px;
+    }
+
+    .slider-form {
+        padding-top: 0px;
+    }
+}
+
+@media only screen and (min-width: 300px) and (max-width: 767px) {
+    .slider-container {
+        width: 80%;
+        margin-top: -30%; 
+    }
+
+    .slider-wrap {
+        position: absolute;
+    }
+}
+
+@media only screen and (min-width: 767px) and (max-width: 1024px) {
+    .slider-container {
+        width: 70%;
+        margin-top: -20%; 
+    }
+
+    .slider-container-login {
+        width: 70%;
+        margin-top: -20%; 
+    }
+
+    .slider-wrap {
+        position: absolute;
+    }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+    .slider-container, .slider-container-login {
+        width: 50%;
+        margin-top: -10%;
+    }
+}
+
+@media only screen and (min-width: 1441px) {
+    .slider-container, .slider-container-login {
+        width: 35%;
+        margin-top: -15%;
+    }
+}
+
+@media only screen and (max-width: 1799px) {
+    .rslides {
+        position: absolute;
+        display: none;
+    }
+
+    .slider-container-login {
+        position: relative;
+        top: 60% !important;
+        margin-top: -13%;
+        z-index: 999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slider-wrap {
+        position: absolute;
+    }
+
+    body {
+        background: rgb(213, 6, 235) ;
+        background: linear-gradient(90deg, rgba(213, 6, 235, 1) 0%, rgba(0, 212, 255, 1) 100%) ;
+    }
+
+}
