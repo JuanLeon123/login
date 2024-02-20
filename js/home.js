@@ -15,11 +15,10 @@ function checkLocalStorage() {
             if (usuario.login_success === true) {
                 loginSuccess = true;
                 break;
-            }
-        }
+            } else {
+                window.location.href = "../index.html";
 
-        if (!loginSuccess) {
-            window.location.href = "../index.html";
+            }
         }
     }
 }
