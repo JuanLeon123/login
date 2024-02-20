@@ -52,7 +52,6 @@ body {
     display: inline-block;
     justify-content: center;
     margin-top: 20px;
-    margin-right: 30px !important;
 }
 
 .sidebar ul li a {
@@ -116,12 +115,6 @@ body {
     transition: opacity 0.3s ease, display 0s 0.3s;
 }
 
-.slider-wrap {
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
 .slider-container,
 .slider-container-home {
     position: absolute;
@@ -139,14 +132,13 @@ body {
 }
 
 .welcome-banner {
-    position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-40%, -15%);
     text-align: center;
     backdrop-filter: blur(100px) !important;
     padding: 60px;
     border-radius: 10%;
+    z-index: 9999;
 }
 
 .profile-pic {
@@ -165,157 +157,4 @@ body {
 
 .text {
     cursor: pointer !important;
-}
-
-@media only screen and (max-width: 480px) {
-    .sidebar {
-        width: 40px;
-    }
-
-    .sidebar:hover {
-        width: 140px;
-    }
-
-    .welcome-banner {
-        transform: translate(-40%, 50%);
-        padding: 20px;
-    }
-
-    .welcome-banner h1, .text {
-        font-size: 1em;
-    }
-
-    .sidebar>ul>li>a .fas, .bottom-menu a .fas {
-        font-size: 15px;
-    }
-
-    .profile-pic {
-        width: 80px;
-    }
-}
-
-@media only screen and (min-width: 481px) and (max-width: 599px) {
-    .sidebar {
-        width: 45px;
-    }
-
-    .sidebar:hover {
-        width: 145px;
-    }
-    
-    .welcome-banner {
-        transform: translate(-40%, 60%);
-        padding: 20px;
-    }
-
-    .welcome-banner h1 {
-        font-size: 2em;
-    }
-
-    .profile-pic {
-        width: 90px;
-    }
-}
-
-@media only screen and (min-width: 600px) and (max-width: 768px) {
-    .sidebar {
-        width: 50px;
-    }
-
-    .sidebar:hover {
-        width: 180px;
-    }
-
-    .welcome-banner {
-        transform: translate(-40%, 70%);
-        padding: 20px;
-    }
-
-    .welcome-banner h1 {
-        font-size: 2.2em;
-    }
-
-    .profile-pic {
-        width: 100px;
-    }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-    .sidebar {
-        width: 55px;
-    }
-
-    .sidebar:hover {
-        width: 200px;
-    }
-
-    .welcome-banner h1 {
-        font-size: 2.5em;
-    }
-
-    .welcome-banner {
-        transform: translate(-40%, 80%);
-        padding: 20px;
-    }
-
-    .profile-pic {
-        width: 110px;
-    }
-}
-
-@media only screen and (min-width: 1025px) and (max-width: 1280px) {
-    .sidebar {
-        width: 60px;
-    }
-
-    .sidebar:hover {
-        width: 220px;
-    }
-
-    .welcome-banner {
-        transform: translate(-40%, 80%);
-        padding: 20px;
-    }
-
-    .welcome-banner h1 {
-        font-size: 2.8em;
-    }
-
-    .profile-pic {
-        width: 120px;
-    }
-}
-
-@media only screen and (min-width: 1281px) and (max-width:1799px){
-    .sidebar {
-        width: 60px;
-    }
-
-    .sidebar:hover {
-        width: 250px;
-    }
-
-    .welcome-banner {
-        transform: translate(-40%, 70%);
-        padding: 20px;
-    }
-
-    .welcome-banner h1 {
-        font-size: 3em;
-    }
-
-    .profile-pic {
-        width: 150px;
-    }
-}
-
-@media only screen and (max-width: 1799px) {
-    .rslides {
-        display: none;
-    }
-
-    body {
-        background: rgb(213, 6, 235);
-        background: linear-gradient(90deg, rgba(213, 6, 235, 1) 0%, rgba(0, 212, 255, 1) 100%);
-    }
 }

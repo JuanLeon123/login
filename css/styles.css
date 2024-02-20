@@ -1,3 +1,7 @@
+@import url(home.css);
+@import url(register.css);
+@import url(responsivesliders.css);
+
 * {
     margin: 0;
     padding: 0;
@@ -7,13 +11,22 @@
     overflow: hidden;
 }
 
-.slider-container {
-    position: absolute;
-    top: 50%;
-    margin-top: -16%;
-    z-index: 999;
-    width: 400px;
+.slider-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
+
+.slider-container-login {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 55%;
+    margin-top: -13%;
+    z-index: 999;
+    width: 100% !important;
+}
+
 
 .form-title {
     width: 100%;
@@ -35,7 +48,7 @@
     padding: 25px;
 }
 
-.slider-form input[type=email]{
+.slider-form input[type=email] {
     width: 100%;
     padding: 8px;
     margin: 25px 0;
@@ -58,6 +71,11 @@
     margin-bottom: 20px;
 }
 
+#confirmPassword {
+    width: 100%;
+    padding: 8px;
+}
+
 .slider-form ul li {
     list-style-type: circle !important;
 }
@@ -70,12 +88,11 @@
 .password-container {
     position: relative;
     display: inline-block;
-    margin-top: 25px;
 }
 
-.toggle-password {
+.toggle-password-login {
     position: absolute;
-    right: 35px !important;
-    top: 13px !important;
+    right: 10px;
+    top: 10px;
     cursor: pointer;
 }

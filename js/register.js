@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } if (passwordValue === "") {
             passwordInput.classList.add("is-invalid");
         } else {
-            
+
         }
     });
 
@@ -114,35 +114,47 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        localStorage.setItem("email", emailValue);
-        localStorage.setItem("name", nameValue);
-        localStorage.setItem("password", passwordValue);
+        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+        let usuarioExistente = usuarios.some(usuario => usuario.emailValue === emailValue);
+        let nuevoUsuario = { emailValue, nameValue, passwordValue, login_success: false };
 
-        Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Te has registrado correctamente.",
-            showConfirmButton: false,
-            timer: 4000
-        });
+        if (usuarioExistente) {
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Ya existe una cuenta con este correo electrónico.",
+            });
+        } else {
+            usuarios.push(nuevoUsuario);
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
-        emailInput.value = "";
-        nameInput.value = "";
-        passwordInput.value = "";
-        confirmPasswordInput.value = "";
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Te has registrado correctamente.",
+                showConfirmButton: false,
+                timer: 3000
+            }).then(() => {
+                emailInput.value = "";
+                nameInput.value = "";
+                passwordInput.value = "";
+                confirmPasswordInput.value = "";
 
-        emailInput.classList.remove("is-valid");
-        nameInput.classList.remove("is-valid");
-        passwordInput.classList.remove("is-valid");
-        confirmPasswordInput.classList.remove("is-valid");
+                emailInput.classList.remove("is-valid");
+                nameInput.classList.remove("is-valid");
+                passwordInput.classList.remove("is-valid");
+                confirmPasswordInput.classList.remove("is-valid");
 
-        stringLenght.classList.remove("text-success");
-        upperCase.classList.remove("text-success");
-        number.classList.remove("text-success");
-        setTimeout(function () {
-        window.location.href = "login.html";
-        }, 2000);
+                stringLenght.classList.remove("text-success");
+                upperCase.classList.remove("text-success");
+                number.classList.remove("text-success");
+                setTimeout(function () {
+                    window.location.href = "../index.html";
+                }, 1000);
+            });
+        }
     }
+
     submitButton.addEventListener("click", submitForm);
 
     function passwordVisibility(passwordInputId, toggleButtonId) {
@@ -166,6 +178,5 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('confirmPasswordButton').addEventListener('click', function () {
         passwordVisibility('confirmPassword', 'confirmPasswordButton');
     });
-    
-    
 });
+

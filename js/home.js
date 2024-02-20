@@ -1,29 +1,43 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let buttonLogout = document.getElementById("logOutButton");
-
-    let user = {
-        email: localStorage.getItem('email'),
-        name: localStorage.getItem('name'),
-        login: localStorage.getItem('login-success'),
-    };
-
-    if (user.name) {
-        document.getElementById("welcome").innerHTML = "Bienvenido(a)! " + user.name;
-    }
-
-    console.log('Usuarios', user);
-
-    if (!user.login) {
-        window.location.href = "login.html";
-    }
-
-    if (buttonLogout) {
-        buttonLogout.addEventListener("click", function (event) {
-            event.preventDefault();
-            localStorage.removeItem('login-success');
-            window.location.href = "login.html";
-        });
-    }
+    checkLocalStorage();
 });
+
+window.addEventListener('storage', function (usuarios) {
+    this.window.location.reload();
+});
+
+function checkLocalStorage() {
+    if (localStorage.length === 0) {
+        window.location.href = "../index.html";
+    } else {
+        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+        for (let usuario of usuarios) {
+            if (usuario.login_success === true) {
+                loginSuccess = true;
+                break;
+            }
+        }
+
+        if (!loginSuccess) {
+            window.location.href = "../index.html";
+        }
+    }
+}
+
+function cerrarSesion() {
+    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    let usuarioIndex = usuarios.findIndex(usuario => usuario.login_success === true);
+
+    if (usuarioIndex !== -1) {
+        usuarios[usuarioIndex].login_success = false;
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    }
+
+    window.location.href = "./index.html";
+}
+
+
+
+
 
 
