@@ -1,49 +1,41 @@
 document.addEventListener("DOMContentLoaded", function () {
+    checkLocalStorage();
 });
 
-document.querySelector('.toggle-password-login').addEventListener('click', function () {
-    const passwordInput = document.getElementById("passwordLogin");
-    if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        document.getElementsByClassName("toggle-password-login")[0].classList.remove("fa-eye");
-        document.getElementsByClassName("toggle-password-login")[0].classList.add("fa-eye-slash");
+window.addEventListener('storage', function (usuarios) {
+    this.window.location.reload();
+});
+
+function checkLocalStorage() {
+    if (localStorage.length === 0) {
+        window.location.href = "../pages/login.html";
     } else {
-        passwordInput.type = 'password';
-        document.getElementsByClassName("toggle-password-login")[0].classList.remove("fa-eye-slash");
-        document.getElementsByClassName("toggle-password-login")[0].classList.add("fa-eye");
-    }
-});
-
-document.getElementById("loginButton").addEventListener("click", function (event) {
-    event.preventDefault(); // Evitar el envío del formulario
-    login(); // Llamar a la función login
-});
-
-function login() {
-    const email = document.getElementById("emailLogin").value.trim();
-    const password = document.getElementById("passwordLogin").value.trim();
-
-    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-
-    let usuarioIndex = usuarios.findIndex(usuario => usuario.emailValue === email && usuario.passwordValue === password);
-
-    if (usuarioIndex !== -1) {
-        usuarios[usuarioIndex].login_success = true;
-        localStorage.setItem('usuarios', JSON.stringify(usuarios));
-
-        Swal.fire({
-            icon: "success",
-            title: "Login exitoso",
-            showConfirmButton: false,
-            timer: 1500
-        }).then(() => {
-            window.location.href = "./pages/home.html";
-        });
-    } else {
-        Swal.fire({
-            icon: "error",
-            title: "Error al iniciar sesión",
-            text: "El correo electrónico o la contraseña son incorrectos.",
-        });
+        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+        for (let usuario of usuarios) {
+            if (usuario.login_success === true) {
+                loginSuccess = true;
+                break;
+            } else {
+                window.location.href = "../pages/login.html";
+            }
+        }
     }
 }
+
+function cerrarSesion() {
+    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    let usuarioIndex = usuarios.findIndex(usuario => usuario.login_success === true);
+
+    if (usuarioIndex !== -1) {
+        usuarios[usuarioIndex].login_success = false;
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    }
+
+    window.location.href = "../pages/login.html";
+}
+
+
+
+
+
+

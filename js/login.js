@@ -1,5 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
+    registerForm.style.display = 'none';
+    loginForm.style.display = 'block';
 });
+
+const registerForm = document.querySelector('.register-form');
+const loginForm = document.querySelector('.login-form');
+
+function toggleForms() {
+    if (getComputedStyle(registerForm).display === 'none') {
+        registerForm.style.display = 'block';
+        loginForm.style.display = 'none';
+    } else {
+        registerForm.style.display = 'none';
+        loginForm.style.display = 'block';
+    }
+}
 
 const emailInput = document.getElementById("email");
 const nameInput = document.getElementById("name");
@@ -17,6 +32,11 @@ const UpperCasePass = /^(?=.*[A-Z])/;
 const NumberPass = /^(?=.*\d)/;
 const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
 
+const form = document.getElementById('register-form');
+form.addEventListener('submit', submitForm);
+
+const formLogin = document.getElementById("login-form");
+formLogin.addEventListener("submit", login);
 
 
 emailInput.addEventListener("input", function () {
@@ -88,26 +108,26 @@ confirmPasswordInput.addEventListener("input", function () {
 
 function submitForm(event) {
     event.preventDefault();
-    const emailValue = emailInput.value.trim();
-    const nameValue = nameInput.value.trim();
-    const passwordValue = passwordInput.value.trim();
-    const confirmPasswordValue = confirmPasswordInput.value.trim();
+    const email = document.getElementById("email").value.trim();
+    const name = document.getElementById("name").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const confirmPassword = document.getElementById("confirmPassword").value.trim();
 
-    if (emailValue === "" || nameValue === "" || passwordValue === "" || confirmPasswordValue === "") {
+    if (email === "" || name === "" || password === "" || confirmPassword === "") {
         Swal.fire({
             icon: "error",
             title: "Oops...",
             text: "Hay campos vacíos, verifica todos los campos.",
         });
         return;
-    } else if (!passwordRegex.test(passwordValue)) {
+    } else if (!passwordRegex.test(password)) {
         Swal.fire({
             icon: "error",
             title: "Contraseña no válida",
             text: "La contraseña debe tener al menos 6 caracteres, incluir al menos una letra mayúscula y un número.",
         });
         return;
-    } else if (passwordValue !== confirmPasswordValue) {
+    } else if (password !== confirmPassword) {
         Swal.fire({
             icon: "error",
             title: "Oops...",
@@ -116,10 +136,8 @@ function submitForm(event) {
         return;
     }
 
-    const usuarios = JSsON.parse(localStorage.getItem('usuarios')) || [];
-    const usuarioExistente = usuarios.some(usuario => usuario.emailValue === emailValue);
-    let nuevoUsuario = { emailValue, nameValue, passwordValue, login_success: false };
-
+    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    const usuarioExistente = usuarios.some(usuario => usuario.email === email);
     if (usuarioExistente) {
         Swal.fire({
             icon: "error",
@@ -127,6 +145,7 @@ function submitForm(event) {
             text: "Ya existe una cuenta con este correo electrónico.",
         });
     } else {
+        let nuevoUsuario = { email, name, password, login_success: false };
         usuarios.push(nuevoUsuario);
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
@@ -137,27 +156,11 @@ function submitForm(event) {
             showConfirmButton: false,
             timer: 3000
         }).then(() => {
-            emailInput.value = "";
-            nameInput.value = "";
-            passwordInput.value = "";
-            confirmPasswordInput.value = "";
-
-            emailInput.classList.remove("is-valid");
-            nameInput.classList.remove("is-valid");
-            passwordInput.classList.remove("is-valid");
-            confirmPasswordInput.classList.remove("is-valid");
-
-            stringLenght.classList.remove("text-success");
-            upperCase.classList.remove("text-success");
-            number.classList.remove("text-success");
-            setTimeout(function () {
-                window.location.href = "../index.html";
-            }, 1000);
+            document.getElementById("register-form").reset();
+            toggleForms();
         });
     }
 }
-
-submitButton.addEventListener("click", submitForm);
 
 function passwordVisibility(passwordInputId, toggleButtonId) {
     const passwordInput = document.getElementById(passwordInputId);
@@ -180,4 +183,53 @@ document.getElementById('passwordButton').addEventListener('click', function () 
 document.getElementById('confirmPasswordButton').addEventListener('click', function () {
     passwordVisibility('confirmPassword', 'confirmPasswordButton');
 });
+
+
+document.querySelector('.toggle-password-login').addEventListener('click', function () {
+    const passwordInput = document.getElementById("passwordLogin");
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        document.getElementsByClassName("toggle-password-login")[0].classList.remove("fa-eye");
+        document.getElementsByClassName("toggle-password-login")[0].classList.add("fa-eye-slash");
+    } else {
+        passwordInput.type = 'password';
+        document.getElementsByClassName("toggle-password-login")[0].classList.remove("fa-eye-slash");
+        document.getElementsByClassName("toggle-password-login")[0].classList.add("fa-eye");
+    }
+});
+
+document.getElementById("loginButton").addEventListener("click", function (event) {
+    event.preventDefault();
+    login();
+});
+
+function login() {
+    const email = document.getElementById("emailLogin").value.trim();
+    const password = document.getElementById("passwordLogin").value.trim();
+
+    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+    let usuarioIndex = usuarios.findIndex(usuario => usuario.email === email && usuario.password === password);
+
+    if (usuarioIndex !== -1) {
+        usuarios[usuarioIndex].login_success = true;
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+        Swal.fire({
+            icon: "success",
+            title: "Login exitoso",
+            showConfirmButton: false,
+            timer: 3000
+        }).then(() => {
+            window.location.href = "../index.html";
+        });
+    } else {
+        Swal.fire({
+            icon: "error",
+            title: "Error al iniciar sesión",
+            text: "El correo electrónico o la contraseña son incorrectos.",
+        });
+    }
+}
+
 

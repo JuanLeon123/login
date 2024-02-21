@@ -17,17 +17,6 @@
     justify-content: center;
 }
 
-.slider-container-login {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    top: 55%;
-    margin-top: -13%;
-    z-index: 999;
-    width: 100% !important;
-}
-
-
 .form-title {
     width: 100%;
     padding: 12px;
@@ -94,5 +83,10 @@
     position: absolute;
     right: 10px;
     top: 10px;
+    cursor: pointer;
+}
+
+form p {
+    text-align: center;
     cursor: pointer;
 }
