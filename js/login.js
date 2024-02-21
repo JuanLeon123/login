@@ -6,16 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
 const registerForm = document.querySelector('.register-form');
 const loginForm = document.querySelector('.login-form');
 
-function toggleForms() {
-    if (getComputedStyle(registerForm).display === 'none') {
-        registerForm.style.display = 'block';
-        loginForm.style.display = 'none';
-    } else {
-        registerForm.style.display = 'none';
-        loginForm.style.display = 'block';
-    }
-}
-
 const emailInput = document.getElementById("email");
 const nameInput = document.getElementById("name");
 const passwordInput = document.getElementById("password");
@@ -106,6 +96,43 @@ confirmPasswordInput.addEventListener("input", function () {
     }
 });
 
+document.getElementById('passwordButton').addEventListener('click', function () {
+    passwordVisibility('password', 'passwordButton');
+});
+
+document.getElementById('confirmPasswordButton').addEventListener('click', function () {
+    passwordVisibility('confirmPassword', 'confirmPasswordButton');
+});
+
+document.querySelector('.toggle-password-login').addEventListener('click', function () {
+    const passwordInput = document.getElementById("passwordLogin");
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        document.getElementsByClassName("toggle-password-login")[0].classList.remove("fa-eye");
+        document.getElementsByClassName("toggle-password-login")[0].classList.add("fa-eye-slash");
+    } else {
+        passwordInput.type = 'password';
+        document.getElementsByClassName("toggle-password-login")[0].classList.remove("fa-eye-slash");
+        document.getElementsByClassName("toggle-password-login")[0].classList.add("fa-eye");
+    }
+});
+
+document.getElementById("loginButton").addEventListener("click", function (event) {
+    event.preventDefault();
+    login();
+});
+
+
+function toggleForms() {
+    if (getComputedStyle(registerForm).display === 'none') {
+        registerForm.style.display = 'block';
+        loginForm.style.display = 'none';
+    } else {
+        registerForm.style.display = 'none';
+        loginForm.style.display = 'block';
+    }
+}
+
 function submitForm(event) {
     event.preventDefault();
     const email = document.getElementById("email").value.trim();
@@ -175,33 +202,6 @@ function passwordVisibility(passwordInputId, toggleButtonId) {
         passwordButton.classList.add("fa-eye");
     }
 }
-
-document.getElementById('passwordButton').addEventListener('click', function () {
-    passwordVisibility('password', 'passwordButton');
-});
-
-document.getElementById('confirmPasswordButton').addEventListener('click', function () {
-    passwordVisibility('confirmPassword', 'confirmPasswordButton');
-});
-
-
-document.querySelector('.toggle-password-login').addEventListener('click', function () {
-    const passwordInput = document.getElementById("passwordLogin");
-    if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        document.getElementsByClassName("toggle-password-login")[0].classList.remove("fa-eye");
-        document.getElementsByClassName("toggle-password-login")[0].classList.add("fa-eye-slash");
-    } else {
-        passwordInput.type = 'password';
-        document.getElementsByClassName("toggle-password-login")[0].classList.remove("fa-eye-slash");
-        document.getElementsByClassName("toggle-password-login")[0].classList.add("fa-eye");
-    }
-});
-
-document.getElementById("loginButton").addEventListener("click", function (event) {
-    event.preventDefault();
-    login();
-});
 
 function login() {
     const email = document.getElementById("emailLogin").value.trim();

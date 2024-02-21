@@ -4,7 +4,8 @@
     overflow: hidden;
     width: 100%;
     padding: 0;
-    margin: 0;;
+    margin: 0;
+    ;
 }
 
 .rslides li {
@@ -28,4 +29,3 @@
     width: 100%;
     border: 0;
 }
-

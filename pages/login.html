@@ -43,8 +43,13 @@
                     <h1>Bienvenido!</h1>
                 </div>
                 <form action="" class="slider-form" id="register-form">
-                    <input class="form-control" type="email" name="email" id="email" placeholder="Correo Electronico">
-                    <input class="form-control" type="text" name="name" id="name" placeholder="Nombre Completo">
+                    <div class="email-container">
+                        <input class="form-control" type="email" name="email" id="email"
+                            placeholder="Correo Electronico">
+                    </div>
+                    <div class="email-container">
+                        <input class="form-control" type="text" name="name" id="name" placeholder="Nombre Completo">
+                    </div>
                     <div class="password-container w-100">
                         <input type="password" name="password" id="password" class="form-control"
                             placeholder="Contraseña" aria-describedby="passwordHelpBlock">
@@ -59,7 +64,7 @@
                     </div>
                     <div class="password-container w-100">
                         <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"
-                            placeholder="Confirmar Contraseña">
+                            placeholder="Confirmar Pass">
                         <i class="fa-regular fa-eye toggle-password" id="confirmPasswordButton"></i>
                     </div>
                     <div class="button-container">
@@ -75,8 +80,10 @@
                     <h1>Login</h1>
                 </div>
                 <form action="" class="slider-form" id="login-form">
-                    <input class="form-control" type="email" name="emailLogin" id="emailLogin"
-                        placeholder="Correo Electronico">
+                    <div class="email-container w-100">
+                        <input class="form-control" type="email" name="emailLogin" id="emailLogin"
+                            placeholder="Correo Electronico">
+                    </div>
                     <div class="password-container w-100">
                         <input type="password" name="passwordLogin" id="passwordLogin" class="form-control"
                             placeholder="Contraseña" aria-describedby="passwordHelpBlock">
