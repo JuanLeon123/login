@@ -1,5 +1,20 @@
-$base-font-size: 16px;
+// Abstracts
+@import 'utilities/variables';
 
-body {
-    font-size: $base-font-size;
-}
+// Base
+@import 'base/typography';
+
+// Components
+@import 'components/buttons';
+@import 'components/carousel';
+
+// Layout
+@import 'layout/navegation';
+
+// Pages
+@import 'pages/home';
+@import 'pages/login';
+
+// Vendors
+@import 'vendors/bootstrap';
+@import 'vendors/jquery-ui';

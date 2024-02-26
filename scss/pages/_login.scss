@@ -1,0 +1,96 @@
+.container--form {
+    position: absolute;
+    top: 50%;
+    margin-top: -16%;
+    z-index: 999;
+    width: 400px;
+}
+
+// Block: form-title
+.container--form__title {
+    width: 100%;
+    padding: 12px;
+    background: #2D99CC;
+}
+
+.container--form__h1 {
+    font-family: "Open sans";
+    font-size: 25px;
+    font-weight: 200;
+    text-align: center;
+    color: #fff;
+}
+
+// Block: slider-form
+.container--form__login {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    // Element: input inside slider-form
+    &__input {
+
+        &--email,
+        &--submit,
+        &--button {
+            width: 100%;
+            padding: 8px;
+            margin: 25px 0;
+            border: none;
+            background: #2D99CC;
+            color: #fff;
+            cursor: pointer;
+
+            // Modifier for email input
+            &--email {
+                @media only screen and (max-width: 768px) {
+                    width: 75%;
+                }
+            }
+        }
+    }
+}
+
+.container--form__input {
+
+    &--email,
+    &--submit,
+    &--button {
+        width: 100%;
+        padding: 8px;
+        margin: 25px 0;
+        border: none;
+        background: #2D99CC;
+        color: #fff;
+        cursor: pointer;
+
+        // Modifier for email input
+        &--email {
+            @media only screen and (max-width: 768px) {
+                width: 75%;
+            }
+        }
+    }
+}
+
+// Block: password-container
+.container--form__password {
+    position: relative;
+    display: inline-block;
+    width: 100%; // Default width
+
+    @media only screen and (max-width: 768px) {
+        width: 75%; // Adjust width for smaller screens
+    }
+
+    // Modifier for toggle-password-login
+    &__toggle-password-login {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+    }
+}

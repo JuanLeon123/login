@@ -1,0 +1,62 @@
+// Block: slider-wrap
+.slider {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    // Modifier for smaller screens
+    @media only screen and (max-width: 1799px),
+    (max-width: 768px),
+    (min-width: 700px) and (max-width: 1000px) {
+        position: static;
+        margin: 0 30px;
+    }
+
+    // Modifier for very small screens
+    @media only screen and (max-width: 400px) {
+        margin: 0 30px;
+    }
+}
+
+.slider-slides {
+    position: relative;
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    li {
+        position: absolute;
+        display: none;
+        width: 100%;
+        left: 0;
+        top: 0;
+
+        // Especifica estilos para el primer li utilizando &:first-child
+        &:first-child {
+            position: relative;
+            display: block;
+            float: left;
+        }
+    }
+
+    img {
+        display: inline-flex;
+        height: auto;
+        float: left;
+        width: 100%;
+        border: 0;
+    }
+}
+
+// Media Queries for body background
+@media only screen and (max-width: 1799px) {
+    body {
+        background: rgba(24, 155, 155, 0.37);
+    }
+
+    .slider-slides {
+        display: none;
+    }
+}

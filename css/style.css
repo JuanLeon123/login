@@ -1,5 +1,155 @@
-body {
-  font-size: 16px;
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.slider {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+@media only screen and (max-width: 1799px), (max-width: 768px), (min-width: 700px) and (max-width: 1000px) {
+  .slider {
+    position: static;
+    margin: 0 30px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .slider {
+    margin: 0 30px;
+  }
+}
+
+.slider-slides {
+  position: relative;
+  list-style: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.slider-slides li {
+  position: absolute;
+  display: none;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+.slider-slides li:first-child {
+  position: relative;
+  display: block;
+  float: left;
+}
+.slider-slides img {
+  display: inline-flex;
+  height: auto;
+  float: left;
+  width: 100%;
+  border: 0;
+}
+
+@media only screen and (max-width: 1799px) {
+  body {
+    background: rgba(24, 155, 155, 0.37);
+  }
+  .slider-slides {
+    display: none;
+  }
+}
+.welcome-banner {
+  position: fixed;
+  width: 40%;
+  height: auto;
+  top: 5%;
+  left: 35%;
+  padding: 0;
+}
+@media only screen and (max-width: 1799px) {
+  .welcome-banner__h1 {
+    font-size: 1rem;
+  }
+  .welcome-banner__img {
+    width: 8rem;
+  }
+}
+
+.container--form {
+  position: absolute;
+  top: 50%;
+  margin-top: -16%;
+  z-index: 999;
+  width: 400px;
+}
+
+.container--form__title {
+  width: 100%;
+  padding: 12px;
+  background: #2D99CC;
+}
+
+.container--form__h1 {
+  font-family: "Open sans";
+  font-size: 25px;
+  font-weight: 200;
+  text-align: center;
+  color: #fff;
+}
+
+.container--form__login {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container--form__login__input--email, .container--form__login__input--submit, .container--form__login__input--button {
+  width: 100%;
+  padding: 8px;
+  margin: 25px 0;
+  border: none;
+  background: #2D99CC;
+  color: #fff;
+  cursor: pointer;
+}
+@media only screen and (max-width: 768px) {
+  .container--form__login__input--email--email, .container--form__login__input--submit--email, .container--form__login__input--button--email {
+    width: 75%;
+  }
+}
+
+.container--form__input--email, .container--form__input--submit, .container--form__input--button {
+  width: 100%;
+  padding: 8px;
+  margin: 25px 0;
+  border: none;
+  background: #2D99CC;
+  color: #fff;
+  cursor: pointer;
+}
+@media only screen and (max-width: 768px) {
+  .container--form__input--email--email, .container--form__input--submit--email, .container--form__input--button--email {
+    width: 75%;
+  }
+}
+
+.container--form__password {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .container--form__password {
+    width: 75%;
+  }
+}
+.container--form__password__toggle-password-login {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */
