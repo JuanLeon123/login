@@ -58,23 +58,6 @@
     display: none;
   }
 }
-.welcome-banner {
-  position: fixed;
-  width: 40%;
-  height: auto;
-  top: 5%;
-  left: 35%;
-  padding: 0;
-}
-@media only screen and (max-width: 1799px) {
-  .welcome-banner__h1 {
-    font-size: 1rem;
-  }
-  .welcome-banner__img {
-    width: 8rem;
-  }
-}
-
 .container--form {
   position: absolute;
   top: 50%;
